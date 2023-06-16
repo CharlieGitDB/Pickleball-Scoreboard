@@ -31,7 +31,7 @@ import androidx.wear.compose.material.Text
 import app.reswob.pickleballscoreboard.R
 import app.reswob.pickleballscoreboard.presentation.theme.PickleballScoreboardTheme
 
-class MainActivity : ComponentActivity()s {
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
