@@ -14,9 +14,19 @@ class ScoreboardViewModel : ViewModel() {
 
     }
 
+    public fun decreasePlayerOneScore() {
+        val newScore = playerOneScore.value - 1
+        playerOneScore.update { newScore }
+    }
+
     public fun increasePlayerTwoScore() {
         val newScore = playerTwoScore.value + 1
         playerTwoScore.update  { newScore }
+    }
+
+    public fun decreasePlayerTwoScore() {
+        val newScore = playerTwoScore.value - 1
+        playerTwoScore.update { newScore }
     }
 
     public fun resetScore() {
