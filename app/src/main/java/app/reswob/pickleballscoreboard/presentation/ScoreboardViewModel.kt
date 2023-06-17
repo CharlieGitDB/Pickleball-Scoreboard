@@ -8,29 +8,30 @@ class ScoreboardViewModel : ViewModel() {
     var playerOneScore = MutableStateFlow(0)
     var playerTwoScore = MutableStateFlow(0)
 
-    public fun increasePlayerOneScore() {
-        val newScore = playerOneScore.value + 1
-        playerOneScore.update { newScore }
+    public fun increasePlayerOneScore() = increaseScore(playerOneScore)
 
-    }
+    public fun decreasePlayerOneScore() = decreaseScore(playerOneScore)
 
-    public fun decreasePlayerOneScore() {
-        val newScore = playerOneScore.value - 1
-        playerOneScore.update { newScore }
-    }
+    public fun increasePlayerTwoScore() = increaseScore(playerTwoScore)
 
-    public fun increasePlayerTwoScore() {
-        val newScore = playerTwoScore.value + 1
-        playerTwoScore.update  { newScore }
-    }
-
-    public fun decreasePlayerTwoScore() {
-        val newScore = playerTwoScore.value - 1
-        playerTwoScore.update { newScore }
-    }
+    public fun decreasePlayerTwoScore() = decreaseScore(playerTwoScore)
 
     public fun resetScore() {
         playerOneScore.update { 0 }
         playerTwoScore.update { 0 }
+    }
+
+    private fun increaseScore(player: MutableStateFlow<Int>) {
+        val newScore = player.value + 1
+        player.update { newScore }
+    }
+
+    private fun decreaseScore(player: MutableStateFlow<Int>) {
+        val newScore = player.value - 1
+        if (newScore < 0) {
+            return
+        }
+
+        player.update { newScore }
     }
 }
