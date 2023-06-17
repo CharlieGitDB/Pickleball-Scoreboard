@@ -115,9 +115,9 @@ private fun ScoreButtons(
     onDecreasePlayerTwoScore: () -> Unit
 ) {
     if (noWinner) {
-        RoundedButton("P1 +", onIncreasePlayerOneScore, onDecreasePlayerOneScore)
+        RoundedButton("T1 +", onIncreasePlayerOneScore, onDecreasePlayerOneScore)
         Spacer(modifier = Modifier.width(10.dp))
-        RoundedButton("P2 +", onIncreasePlayerTwoScore, onDecreasePlayerTwoScore)
+        RoundedButton("T2 +", onIncreasePlayerTwoScore, onDecreasePlayerTwoScore)
     }
 }
 
@@ -126,7 +126,7 @@ private fun ScoreButtons(
 private fun RoundedButton(
     text: String,
     onClick: () -> Unit,
-    onDoubleClick: () -> Unit
+    onLongClick: () -> Unit
 ) {
     Column(verticalArrangement = Arrangement.Center) {
         Box(
@@ -146,7 +146,7 @@ private fun RoundedButton(
                         .background(color = Color.Transparent)
                         .combinedClickable(
                             onClick = onClick,
-                            onDoubleClick = onDoubleClick
+                            onLongClick = onLongClick
                         )
                 )
             }
@@ -158,9 +158,9 @@ private fun RoundedButton(
 private fun WinnerMessage(winner: Player?) {
     if (winner != null) {
         if (winner == Player.ONE) {
-            Text(text = "P1 Wins!")
+            Text(text = "T1 Wins!")
         } else if (winner == Player.TWO) {
-            Text(text = "P2 Wins!")
+            Text(text = "T2 Wins!")
         }
     }
 }
